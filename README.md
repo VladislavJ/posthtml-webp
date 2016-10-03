@@ -29,17 +29,20 @@ After:
 ## Usage
 
 ``` js
-const fs = require('fs');
-const posthtml = require('posthtml');
-const posthtmlWebp = require('posthtml-webp');
+import { readFileSync } from 'fs'
+import posthtml from 'posthtml'
+import webP from 'posthtml-webp'
 
-posthtml()
-    .use(posthtmlWebp())
-    .process(html/*, options */)
-    .then(result => fs.writeFileSync('./after.html', result.html));
+const html = readFileSync('./index.html', 'utf8')
+
+posthtml([ webP() ])
+  .process(html)
+  .then(({ html }) => console.log(html)) 
 ```
 
-### License [MIT](LICENSE)
+## CONTRIBUTING
+See [PostHTML Guidelines](https://github.com/posthtml/posthtml/tree/master/docs) and [CONTRIBUTING](CONTRIBUTING.md).
+
 
 [npm]: https://img.shields.io/npm/v/posthtml.svg
 [npm-url]: https://npmjs.com/package/posthtml
